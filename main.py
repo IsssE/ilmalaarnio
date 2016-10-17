@@ -3,10 +3,10 @@ import paho.mqtt.client as mqtt
 import json
 import time
 
-from telegram.ext import Updater
-from telegram.ext import CommandHandler
+#from telegram.ext import Updater
+#from telegram.ext import CommandHandler
 
-updater = Updater(token='205727761:AAGud0AKHdgXL-LxdV6mh7Za3cg83hc50YU')
+#updater = Updater(token='205727761:AAGud0AKHdgXL-LxdV6mh7Za3cg83hc50YU')
 
 
 
@@ -15,11 +15,14 @@ class Connection:
 		self._ip = broker_ip
 		self.client = mqtt.Client(protocol="MQTTv31")
 
-		self.client.on_connect = self.on_connect
-		self.on_message = self.on_message
+
 		def on_connect(client, userdata, flags, rc):
 			print ("Connected with result code "+str(rc))
-			self.client.subscribe("$SYS/#")		
+			self.client.subscribe("$SYS/#")	
+
+			
+		self.client.on_connect = self.on_connect
+		self.on_message = self.on_message	
 
 		self.client.connect(broker_ip)
 		self.client.subscribe("team6_read")
