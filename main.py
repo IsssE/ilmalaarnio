@@ -6,7 +6,7 @@ import time
 class Connection:
 	def __init__(self, broker_ip, baddr = ""):
 		self._ip = broker_ip
-		self.client = mqtt.Client(protocol="MQTTv31")
+		self.client = mqtt.Client()
 
 
 			
