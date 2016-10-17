@@ -17,10 +17,10 @@ class Connection:
 		self.on_message = self.on_message	
 
 		self.client.connect(broker_ip)
-		self.client.subscribe("team6_read")
+		self.client.subscribe("team6_read", 2)
 
 		self.messages = []
-		self.client.loop(2)
+		self.client.loop_forever()
 
 
 	def on_message(self, client, userdata, msg):
@@ -47,4 +47,6 @@ class Copter:
 
 
 conn = Connection("54.93.150.126")
+
+conn.client.subscribe("team6_read", 2)
 conn.send(0, 0, 3, 150)
