@@ -12,11 +12,11 @@ class Connection:
 
 	def on_connect(self, client, userdata, flags, rc):
 		#called when connected
-    	print("Connected with result code "+str(rc))
+    	print "Connected with result code "+str(rc)
     	client.subscribe("$SYS/#")
 
 
 	def on_message(self, client, userdata, msg):
-    	print(msg.topic+" "+str(msg.payload))
+    	print msg.topic+" "+str(msg.payload)
 
 conn = Connection("54.93.150.126")
