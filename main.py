@@ -3,23 +3,24 @@ import paho.mqtt.client as mqtt
 import json
 import time
 
-
 class Connection:
 	def __init__(self, broker_ip, baddr = ""):
 		self._ip = broker_ip
 		self.client = mqtt.Client(protocol="MQTTv31")
 
-		self.client.on_connect = on_connect
-		self.on_message = self.on_message
 		def on_connect(client, userdata, flags, rc):
 			print ("Connected with result code "+str(rc))
-			self.client.subscribe("$SYS/#")		
+			self.client.subscribe("$SYS/#")	
+
+			
+		self.client.on_connect = on_connect
+		self.on_message = self.on_message	
 
 		self.client.connect(broker_ip)
 		self.client.subscribe("team6_read")
 
 		self.messages = []
-
+		self.client.loop(2)
 
 
 	def on_message(self, client, userdata, msg):
