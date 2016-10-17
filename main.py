@@ -24,4 +24,4 @@ class Connection:
 		self.client.publish("team6_write", payload = "{\"m1\": \"%d\", \"m2\":\"%d\", \"m_up\":\"%d\", \"time\":\"%d\", \"command_id\":\"%d\"}" %(m1, m2, m_up, time, command_id))
 
 conn = Connection("54.93.150.126")
-conn.send(1, 2, 3, 200)
+conn.send(0, 0, 3, 150)
