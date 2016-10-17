@@ -15,7 +15,7 @@ class Connection:
 		self.client.subscribe("team6_read", 2)
 
 		self.messages = []
-		self.client.loop_forever()
+	#		self.client.loop_forever()
 
 	def on_connect(self, client, userdata, flags, rc):
 		print ("Connected with result code "+str(rc))
@@ -48,5 +48,9 @@ class Copter:
 
 conn = Connection("54.93.150.126")
 
-#conn.send(0, 0, 3, 150)
 
+#conn.send(0, 0, 1, 50)
+while True:
+	#conn.client.loop(timeout=1.0)
+	conn.send(0, 0, 2, 170)
+	time.sleep(2)
