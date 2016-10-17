@@ -7,19 +7,15 @@ class Connection:
 	def __init__(self, broker_ip, baddr = ""):
 		self._ip = broker_ip
 		self.client = mqtt.Client()
-
-
 			
 		self.client.on_connect = self.on_connect
 		self.on_message = self.on_message	
 
-		self.client.connect(broker_ip, 1883, 60)
-		self.client.subscribe("team6_read")
+		self.client.connect(broker_ip)
+		self.client.subscribe("team6_read", 2)
 
 		self.messages = []
-
 		self.client.loop_forever()
-
 
 	def on_connect(client, userdata, flags, rc):
 		print ("Connected with result code "+str(rc))
@@ -49,13 +45,6 @@ class Copter:
 
 
 conn = Connection("54.93.150.126")
-<<<<<<< HEAD
 
-#conn.send(0, 0, 1, 50)
-print(conn.get())
+#conn.send(0, 0, 3, 150)
 
-print("rip")
-
-=======
-conn.send(0, 0, 3, 150)
->>>>>>> 3fd30008165aab84fcf23536a71ee258999d995c
