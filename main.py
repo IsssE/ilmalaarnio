@@ -19,4 +19,9 @@ class Connection:
 	def on_message(self, client, userdata, msg):
 		print (msg.topic+" "+str(msg.payload))
 
+	def send(self, m1, m2, m_up, time, command_id=0):
+		print("{\"m1\": \"%d\", \"m2\":\"%d\", \"m_up\":\"%d\", \"time\":\"%d\", \"command_id\":\"%d\"}" %(m1, m2, m_up, time, command_id))
+		self.client.publish("team6_write", payload = "{\"m1\": \"%d\", \"m2\":\"%d\", \"m_up\":\"%d\", \"time\":\"%d\", \"command_id\":\"%d\"}" %(m1, m2, m_up, time, command_id))
+
 conn = Connection("54.93.150.126")
+conn.send(1, 2, 3, 200)
