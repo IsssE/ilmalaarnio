@@ -17,7 +17,7 @@ def on_subscribe(mosq, obj, mid, granted_qos):
 def on_log(mosq, obj, level, string):
     print(string)
 
-mqttc = mqtt.Client()
+mqttc = mqtt.Client(protocol=mqtt.MQTTv31)
 # Assign event callbacks
 mqttc.on_message = on_message
 mqttc.on_connect = on_connect
@@ -33,6 +33,4 @@ mqttc.subscribe("team6_read", 0)
 #mqttc.publish("hello/world", "my message")
 
 # Continue the network loop, exit when an error occurs
-rc = 0
-while rc == 0:
-   rc = mqttc.loop()
+mqttc.loop_forever()

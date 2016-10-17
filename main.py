@@ -6,10 +6,10 @@ import time
 class Connection:
 	def __init__(self, broker_ip, baddr = ""):
 		self._ip = broker_ip
-		self.client = mqtt.Client()
+		self.client = mqtt.Client(protocol=mqtt.MQTTv31)
 			
 		self.client.on_connect = self.on_connect
-		self.on_message = self.on_message	
+		self.client.on_message = self.on_message	
 
 		self.client.connect(broker_ip)
 		self.client.subscribe("team6_read", 2)
@@ -17,10 +17,12 @@ class Connection:
 		self.messages = []
 		self.client.loop_forever()
 
-	def on_connect(client, userdata, flags, rc):
+	def on_connect(self, client, userdata, flags, rc):
 		print ("Connected with result code "+str(rc))
 		self.client.subscribe("team6_read")	
 
+	def on_subscribe(self, client, userfata, mid, granted_qos):
+		print("Subscribed")
 	def on_message(self, client, userdata, msg):
 		self.messages.append(msg)
 		print(msg.payload)
