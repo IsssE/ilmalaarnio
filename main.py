@@ -46,11 +46,11 @@ class Copter:
 		self.m_up = 1 		#ascent motor: default speed
 		self.x_control = control
 
-	def horizontal(x)
+	def horizontal(x):
 		if (x > self.x_control):
 			self.conn.send(2,1, 2, 30)
 			time.sleep(0.5)
-		elif (x < (self.x_control * -1))
+		elif (x < (self.x_control * -1)):
 			self.conn.send(1,2, 2, 30)
 			time.sleep(0.5)
 
@@ -63,6 +63,8 @@ cop = Copter(conn)
 #conn.send(0, 0, 1, 50)
 while True:
 	#conn.client.loop(timeout=1.0)
+	entry = json.load(conn.get())
+	Copter.horizontal(entry.x)
 
-	conn.send(0, 0, 2, 170)
-	time.sleep(2)
+	#conn.send(0, 0, 2, 170)
+	#time.sleep(2)
