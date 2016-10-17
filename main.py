@@ -16,24 +16,24 @@ class Connection:
 		self.client = mqtt.Client(protocol="MQTTv31")
 
 
-		def on_connect(client, userdata, flags, rc):
-			print ("Connected with result code "+str(rc))
-			self.client.subscribe("$SYS/#")	
 
-			
 		self.client.on_connect = self.on_connect
 		self.on_message = self.on_message	
 
-		self.client.connect(broker_ip)
+		self.client.connect(broker_ip, 1883, 60)
 		self.client.subscribe("team6_read")
 
 		self.messages = []
 
+		self.client.loop_forever()
 
+	def on_connect(client, userdata, flags, rc):
+		print ("Connected with result code "+str(rc))
+		self.client.subscribe("team6_read")	
 
 	def on_message(self, client, userdata, msg):
 		self.messages.append(msg)
-		print(msg)
+		print(msg.payload)
 		if len(self.messages) > 5:
 			self.messages.pop(0)
 
@@ -56,7 +56,7 @@ class Copter:
 
 conn = Connection("54.93.150.126")
 
-conn.send(0, 0, 1, 50)
+#conn.send(0, 0, 1, 50)
 print(conn.get())
 
 print("rip")
