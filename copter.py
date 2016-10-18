@@ -5,8 +5,7 @@ class Copter:
 		self.x_control = control
 
 		self.latest_horizontal_x = []
-		self.average.x = 0
-
+		
 	#checks if given x is in the control direction
 	def horizontal(self, x):
 		#print(x)
