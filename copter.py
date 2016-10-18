@@ -4,7 +4,7 @@ import time
 import connection
 
 class Copter:
-	def __init__(self, conn, control=40):
+	def __init__(self, conn, control=30):
 		self.conn = conn
 		self.m_up = 1 		#ascent motor: default speed
 		self.x_control = control
@@ -30,7 +30,7 @@ class Copter:
 		all_x = 0
 		self.latest_horizontal_x = []
 		entry_list = self.conn.get(amount)
-		
+
 		if not entry_list:
 			return
 		for entry in entry_list: 	
@@ -38,10 +38,9 @@ class Copter:
 			json_entry = json.loads(entry)
 			self.latest_horizontal_x.append(int(json_entry['x']))
 
-		all_x = int(sum(self.latest_horizontal_x)) / amount
+		all_x = sum(self.latest_horizontal_x) / amount
 
 
-		print(all_x)
 		self.horizontal(all_x)
 
 	
