@@ -44,9 +44,9 @@ class Navigation:
 		return(t.loc.x, t.loc.y, t.loc.z)
 
 n = Navigation()
-n.add_beacon(1, (0, 0, 0))
-n.add_beacon(2, (1, 1, 1))
-n.add_beacon(3, (1, 0, 0))
+n.add_beacon("1", (0, 0, 0))
+n.add_beacon("2", (1, 1, 1))
+n.add_beacon("3", (1, 0, 0))
 
 print(n.get_position([(1, 1), (2, 1), (3, 1)]))
 
