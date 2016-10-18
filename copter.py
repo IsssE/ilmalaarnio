@@ -6,20 +6,21 @@ class Copter:
 
 		self.latest_horizontal_x = []
 		self.average.x = 0
+
+	#checks if given x is in the control direction
 	def horizontal(self, x):
 		#print(x)
 		
 
-		if (x > self.x_control):
-			print(str(x) + " suurempi " + str(self.x_control))
+		if  x > self.x_control:
 			self.conn.send(2,1, 2, 30)
 			time.sleep(0.5)
-		elif (x < (self.x_control * -1)):
-			print(str(x) < str(self.x_control * -1))
+		elif x < (self.x_control * -1):
 			self.conn.send(1,2, 2, 30)
 			time.sleep(0.5)
 
-
+	#Takes 10 latest compas data, calculates average and 
+	#sends the vveragge to horizonta()
 	def fix_horizon_direction(self):
 
 		entry_list = conn.get()
