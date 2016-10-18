@@ -40,3 +40,6 @@ class Connection:
 			return self.messages.pop()
 		except:
 			return None
+
+	def loop(self):
+		self.client.loop()
