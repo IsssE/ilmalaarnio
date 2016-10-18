@@ -4,8 +4,8 @@ import time
 
 import connection
 
-conn = Connection("54.93.150.126")
-cop = Copter(conn)
+conn = connection.Connection("54.93.150.126")
+#cop = Copter(conn)
 
 #time.sleep(1)
 while True:

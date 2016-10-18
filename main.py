@@ -26,7 +26,7 @@ class Copter:
 
 
 
-conn = Connection("54.93.150.126")
+conn = connection.Connection("54.93.150.126")
 cop = Copter(conn)
 
 time.sleep(1)
