@@ -30,18 +30,24 @@ conn = connection.Connection("54.93.150.126")
 cop = Copter(conn)
 
 time.sleep(1)
-conn.send(1, 1, 0, 50)
+#conn.send(1, 1, 0, 50)
 parameters = (0, 0, 0, 0)
 while True:
 	command = raw_input("Komento:")
-	if command.lower() == "r":
-		parameters = (1, 2, 2, 50)
-	elif command.lower() == "l":
-		parameters = (2, 1, 2, 50)
+	if command.lower() == "a":
+		parameters = (1, 2, 5, 20)
+	elif command.lower() == "d":
+		parameters = (2, 1, 5, 20)
+	elif command.lower() == "w":
+		parameters = (1, 1, 5, 50)
 	elif command.lower() == "s":
-		parameters = (1, 1, 2, 50)
-	elif command.lower() == "b":
-		parameters = (2, 2, 2, 50)
+		parameters = (2, 2, 5, 50)
+	elif command.lower() == "e":
+		parameters = (0, 0, 5, 100)
+	elif command.lower() == "q":
+		parameters = (0, 0, 0, 50)
+	else:
+		continue
 
 	conn.send(parameters[0], parameters[1], parameters[2], parameters[3])
 
@@ -52,8 +58,8 @@ while True:
 	#conn.client.loop()
 	#entry = conn.get()
 	#print(entry)
-	if entry:
-		pass
+#	if entry:
+#		pass
 		#print (entry)
 		#json_entry = json.loads(entry)
 		#print(json_entry)
