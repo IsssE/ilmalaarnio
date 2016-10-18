@@ -20,7 +20,7 @@ class Copter:
 			time.sleep(0.5)
 
 
-	def get_horizon(self):
+	def fix_horizon_direction(self):
 
 		entry_list = conn.get()
 		
