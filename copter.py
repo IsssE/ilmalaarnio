@@ -19,19 +19,19 @@ class Copter:
 			self.conn.send(1,2, 2, 30)
 			time.sleep(0.5)
 
-	#Takes 10 latest compas data, calculates average and 
-	#sends the vveragge to horizonta()
-	def fix_horizon_direction(self):
+	#Takes amount given and compas data, calculates average and 
+	#sends the average to horizonta()
+	def fix_horizon_direction(self, amount):
 
-		entry_list = conn.get()
+		entry_list = conn.get(amount)
 		
 		for entry in entry_list: 	
 
 			json_entry = json.loads(entry)
 			self.latest_horizontal_x.append(json_entry['x'])
 
-		for x in self.latest_horizontal_x:
-			all_x = x + all_x
+		all_x = sum(self.latest_horizontal_x) / amount
+
 
 		print(all_x)
 		self.horizontal(all_x)
