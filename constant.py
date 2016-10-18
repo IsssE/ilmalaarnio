@@ -9,8 +9,8 @@ conn = connection.Connection("54.93.150.126")
 
 #time.sleep(1)
 while True:
-	conn.send(0, 0, 2, 30)
+	conn.send(2, 2, 2, 30)
 	time.sleep(0.2)
-	conn.send(0, 0, 1, 20)
+	conn.send(2, 2, 1, 20)
 	time.sleep(0.2)
 	
