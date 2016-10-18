@@ -23,6 +23,7 @@ class Connection:
 
 	def on_subscribe(self, client, userfata, mid, granted_qos):
 		print("Subscribed")
+
 	def on_message(self, client, userdata, msg):
 		self.messages.append(msg.payload)
 		if len(self.messages) > 100:
@@ -48,9 +49,12 @@ class Copter:
 
 	def horizontal(x):
 		if (x > self.x_control):
+			print(str(x) + " suurempi " + str(self.x_control))
 			self.conn.send(2,1, 2, 30)
 			time.sleep(0.5)
 		elif (x < (self.x_control * -1)):
+			print(str(x) + " pienempi " + str(-1 * self.x_control))
+
 			self.conn.send(1,2, 2, 30)
 			time.sleep(0.5)
 
@@ -64,7 +68,7 @@ cop = Copter(conn)
 while True:
 	#conn.client.loop(timeout=1.0)
 	entry = json.load(conn.get())
-	Copter.horizontal(entry.x)
+	copter.horizontal(entry.x)
 
 	#conn.send(0, 0, 2, 170)
 	#time.sleep(2)
