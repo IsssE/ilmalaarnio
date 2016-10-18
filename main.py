@@ -66,16 +66,17 @@ conn = Connection("54.93.150.126")
 cop = Copter(conn)
 
 time.sleep(1)
-#conn.send(0, 0, 1, 50)
+conn.send(1, 1, 0, 50)
 while True:
 	conn.client.loop()
 	entry = conn.get()
 	#print(entry)
 	if entry:
+		pass
 		#print (entry)
-		json_entry = json.loads(entry)
+		#json_entry = json.loads(entry)
 		#print(json_entry)
-		cop.horizontal(json_entry['x'])
+		#cop.horizontal(json_entry['x'])
 
 	#conn.send(0, 0, 2, 170)
 	#time.sleep(2)
