@@ -23,7 +23,8 @@ class Copter:
 	def fix_horizon_direction(self, amount):
 
 		entry_list = conn.get(amount)
-		
+		if not entry_list:
+			return
 		for entry in entry_list: 	
 
 			json_entry = json.loads(entry)
