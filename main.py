@@ -7,7 +7,7 @@ import connection
 import copter
 
 conn = connection.Connection("54.93.150.126")
-cop = Copter(conn)
+cop = copter.Copter(conn)
 
 time.sleep(1)
 #conn.send(1, 1, 0, 50)
