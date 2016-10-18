@@ -34,15 +34,23 @@ conn.send(1, 1, 0, 50)
 parameters = (0, 0, 0, 0)
 while True:
 	command = raw_input("Komento:")
-	if command.lower() == "right":
-		parameters = (1, 0, 2, 50, 1)
+	if command.lower() == "r":
+		parameters = (1, 2, 2, 50)
+	elif command.lower() == "l":
+		parameters = (2, 1, 2, 50)
+	elif command.lower() == "s":
+		parameters = (1, 1, 2, 50)
+	elif command.lower() == "b":
+		parameters = (2, 2, 2, 50)
+
+	conn.send(parameters[0], parameters[1], parameters[2], parameters[3])
 
 	#conn.client.loop(timeout=1.0)
-	entry = json.load(conn.get())
-	copter.horizontal(entry.x)
+	#entry = json.load(conn.get())
+	#copter.horizontal(entry.x)
 
-	conn.client.loop()
-	entry = conn.get()
+	#conn.client.loop()
+	#entry = conn.get()
 	#print(entry)
 	if entry:
 		pass
