@@ -17,11 +17,10 @@ class Copter:
 		
 
 		if  x > self.x_control:
-			self.conn.send(2,1, 0, 30)
-			time.sleep(0.5)
+			self.conn.send(0,0, 0, 5)
 		elif x < (self.x_control * -1):
-			self.conn.send(1,2, 0, 30)
-			time.sleep(0.5)
+			self.conn.send(0,0, 0, 5)
+		
 
 	#Takes amount given and compas data, calculates average and 
 	#sends the average to horizonta()
@@ -40,7 +39,7 @@ class Copter:
 
 		all_x = sum(self.latest_horizontal_x) / amount
 
-
+		print all_x
 		self.horizontal(all_x)
 
 	

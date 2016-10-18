@@ -24,7 +24,8 @@ class Navigation:
 	def strength_to_distance(self, strength):
 		#return approximated distance to beacon
 		#todo: kaava
-		return strength
+		return float(strength)
+
 
 	def get_position(self, beacon_s):
 		#returns np.array(x,y,z): approximate position. 
@@ -35,18 +36,18 @@ class Navigation:
 		dist_b3 = self.strength_to_distance(b3[1])
 
 		#coord_b1 = self.beacons[b1[0]]
-		t, label = p.add_target()
+		t, label = self.p.add_target()
 		t.add_measure("1", dist_b1)
 		t.add_measure("2", dist_b2)
 		t.add_measure("3", dist_b3)
 
-		P.solve()
+		self.p.solve()
 		return(t.loc.x, t.loc.y, t.loc.z)
 
 n = Navigation()
 n.add_beacon("1", (0, 0, 0))
-n.add_beacon("2", (1, 1, 1))
-n.add_beacon("3", (1, 0, 0))
+n.add_beacon("2", (2, 2, 2))
+n.add_beacon("3", (2, 0, 0))
 
-print(n.get_position([(1, 1), (2, 1), (3, 1)]))
+print(n.get_position([(1, 1.4), (2, 1.4), (3, 1.4)]))
 
