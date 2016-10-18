@@ -10,4 +10,5 @@ conn = connection.Connection("54.93.150.126")
 cop = copter.Copter(conn)
 
 while True:
+	conn.loop()
 	cop.fix_horizon_direction(20)
