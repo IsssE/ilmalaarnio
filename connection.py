@@ -26,9 +26,9 @@ class Connection:
 	def on_message(self, client, userdata, msg):
 		#print (msg)
 		self.messages.append(msg.payload)
-		print (self.messages)
-		#if len(self.messages) > 100:
-		#	self.messages.pop(0)
+		#print (self.messages)
+		if len(self.messages) > 100:
+			self.messages.pop(0)
 
 	def send(self, m1, m2, m_up, time, command_id=0):
 		#print("{\"m1\": \"%d\", \"m2\":\"%d\", \"m_up\":\"%d\", \"time\":\"%d\", \"command_id\":\"%d\"}" %(m1, m2, m_up, time, command_id))

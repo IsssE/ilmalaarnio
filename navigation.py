@@ -50,6 +50,3 @@ n.add_beacon(3, (1, 0, 0))
 
 print(n.get_position([(1, 1), (2, 1), (3, 1)]))
 
-
-
-
